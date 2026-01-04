@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card reveal">
+    <h2>Pay Fees</h2>
+    <p><strong>Balance:</strong> KES {{ fee.balance }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <input name="phone" placeholder="2547XXXXXXXX">
+        <input name="amount" placeholder="Amount">
+        <button>Pay via M-Pesa</button>
+    </form>
+</div>
+
+{% endblock %}

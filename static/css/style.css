@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1, h2, h3 {
+    color: #0b3d2e;
+}
+
+p {
+    line-height: 1.6;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    color: #333;
+    animation: fadeIn 0.8s ease-in;
+    background: linear-gradient(to right, #f8f9fa, #eef2f3);
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+html, body {
+    height: 100%;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main.container {
+    flex: 1;
+}
+
+
+/* NAVBAR */
+.navbar {
+    background: #0b3d2e;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.apply-btn {
+    background: #1abc9c;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+button, .apply-btn {
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .apply-btn:hover {
+    transform: scale(1.05);
+    background: #148f77;
+}
+.card .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+
+}
+/* Dashboard Menu */
+.dashboard-menu {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.dashboard-menu li {
+    background: linear-gradient(135deg, #0f766e, #14b8a6);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-menu li:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-menu a {
+    display: block;
+    padding: 1.2rem;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+/* Logout button */
+.logout-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    background: #dc2626;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #b91c1c;
+}
+.reveal {
+    animation: fadeUp 0.6s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* MOBILE MENU */
+.menu-toggle {
+    display: none;
+    background: none;
+    color: white;
+    font-size: 24px;
+    border: none;
+}
+
+/* CONTENT */
+.container {
+    padding: 30px;
+}
+
+/* FOOTER */
+footer {
+    background: #0b3d2e;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 50px;
+}
+
+/* PROGRAM CARDS */
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background: #0b3d2e;
+    color: white;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    #nav-menu {
+        display: none;
+        flex-direction: column;
+        background: #0b3d2e;
+        width: 100%;
+    }
+
+    #nav-menu a {
+        padding: 10px;
+        border-top: 1px solid rgba(255,255,255,.2);
+    }
+}
+#nav-menu.active {
+    display: flex;
+}
+
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    background: #0b3d2e;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}

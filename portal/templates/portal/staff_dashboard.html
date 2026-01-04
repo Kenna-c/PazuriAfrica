@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card reveal">
+    <h2>Staff Dashboard</h2>
+    <p>Welcome, {{ request.user.get_full_name }}</p>
+    <ul class="dashboard-menu">
+        <li><a href="#">My Modules</a></li>
+        <li><a href="#">Upload Assignments</a></li>
+        <li><a href=""  ><p>DEBUG MODULE ID: {{ module.id }}</p>Upload Results</a></li>
+    </ul>
+    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+</div>
+
+<div class="card reveal">
+    <h3>My Modules</h3>
+    <ul>
+        
+
+        {% for module in module %}
+            <li>
+                {{ module.code }} – {{ module.name }}
+                <a href="{% url 'staff_module_detail' module.id %}">View</a>
+            </li>
+        {% empty %}
+            <li>No assigned modules</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card reveal">
+    <h3>Recent Assignments</h3>
+    <ul>
+        {% for assignment in assignments %}
+            <li>{{ assignment.title }} - Due: {{ assignment.due_date }}</li>
+        {% empty %}
+            <li>No recent assignments</li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="card reveal">
+    <h3>Upcoming Lectures</h3>
+    <ul>
+        {% for lecture in lectures %}
+            <li>{{ lecture.topic }} - {{ lecture.scheduled_at }}</li>
+        {% empty %}
+            <li>No upcoming lectures</li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock %}

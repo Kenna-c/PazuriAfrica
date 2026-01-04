@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pazuri Africa College</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="page-wrapper">
+
+
+  <header class="navbar">
+      <div class="logo">Pazuri Africa College</div>
+
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+      <nav id="nav-menu">
+          <a href="/">Home</a>
+          <a href="/about/">About</a>
+          <a href="/programs/">Programs</a>
+          <a href="/news/">News</a>
+          <a href="/contact/">Contact</a>
+          <a href="/apply/" class="apply-btn">Apply</a>
+          {% if user.is_authenticated %}
+            {% if user.profile.role == 'student' %}
+                <a href="{% url 'student_dashboard' %}">Student Portal</a>
+            {% elif user.profile.role == 'staff' %}
+                <a href="{% url 'staff_dashboard' %}">Staff Portal</a>
+            {% endif %}
+
+            <a href="{% url 'logout' %}">Logout</a>
+          {% else %}
+              <a href="{% url 'login' %}">Login</a>
+          {% endif %}
+      </nav>
+  </header>
+
+  <main class="container">
+      {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+      <p>© 2026 Pazuri Africa College</p>
+      <small>The Citadel of Possibilities</small>
+  </footer>
+</div>
+<!-- Custom JS -->
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

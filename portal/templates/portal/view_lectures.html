@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2>Lectures</h2>
+    <ul>
+        {% for lecture in lectures %}
+            <li>
+                <strong>{{ lecture.topic }}</strong> - {{ lecture.date }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

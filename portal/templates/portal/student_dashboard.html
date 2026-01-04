@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="card reveal">
+    <h2>Student Dashboard</h2>
+    <p>Welcome, {{ request.user.get_full_name }}</p>
+
+    <ul class="dashboard-menu">
+        <li><a href="#">My Program</a></li>
+        <li><a href="{% url 'view_lectures' %}">Lectures</a></li>
+        <li><a href="#">Results</a></li>
+        <li><a href="/payments/pay/">Pay Fees</a></li>
+    </ul>
+
+    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+</div>
+<div class="card reveal">
+    <h2>Student Dashboard</h2>
+    <p>Welcome, <strong>{{ profile.first_name }}</strong></p>
+    <p><strong>Admission Number:</strong> {{ profile.admission_number }}</p>
+</div>
+<div class="card reveal">
+    <h3>My Program</h3>
+    {% if application %}
+        <p><strong>Program:</strong> {{ application.program.name }}</p>
+        <p><strong>Status:</strong> {{ application.status|title }}</p>
+    {% else %}
+        <p>No approved program yet.</p>
+    {% endif %}
+</div>
+
+<div class="card reveal">
+    <h3>My Modules</h3>
+        {% if modules %}
+            <ul>
+                {% for module in modules %}
+                    <li>{{ module.code }} – {{ module.name }}</li>
+                {% empty %}
+                    <li>No modules assigned.</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No modules available.</p>
+        {% endif %}
+</div>
+<div class="card reveal">
+    <h3>Assignments</h3>
+    {% if assignments %}
+        <ul>
+            {% for assignment in assignments %}
+                <li>
+                    <strong>{{ assignment.title }}</strong><br>
+                    Module: {{ assignment.module.code }}<br>
+                    Due: {{ assignment.due_date }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No assignments available.</p>
+    {% endif %}
+</div>
+</div>
+<div class="card reveal">
+    <h3>Results</h3>
+    {% if results %}
+        <table border="1" cellpadding="8">
+            <tr>
+                <th>Module</th>
+                <th>Score</th>
+                <th>Grade</th>
+            </tr>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.module.code }}</td>
+                <td>{{ result.score }}</td>
+                <td>{{ result.grade }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No results available.</p>
+    {% endif %}
+</div>
+<div class="card reveal">
+    <h3>Attendance</h3>
+    {% if attendance_records %}
+        <ul>
+            {% for record in attendance_records %}
+                <li>
+                    {{ record.module.code }} – {{ record.date }} :
+                    {{ record.status|title }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No attendance records.</p>
+    {% endif %}
+</div>
+
+<div class="card reveal">
+   <h3>Fees</h3>
+    {% if fees %}
+        <p><strong>Total Fees:</strong> KES {{ fees.total_fees }}</p>
+        <p><strong>Paid:</strong> KES {{ fees.paid_amount }}</p>
+        <p><strong>Balance:</strong> KES {{ fees.balance }}</p>
+    {% else %}
+        <p>No fee record found.</p>
+    {% endif %}
+
+{% endblock %}

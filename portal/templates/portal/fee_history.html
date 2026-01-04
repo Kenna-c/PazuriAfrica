@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card reveal">
+    <h3>Fee History</h3>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Method</th>
+            <th>Status</th>
+        </tr>
+        {% for fee in fees %}
+        <tr>
+            <td>{{ fees.date }}</td>
+            <td>{{ fees.amount }}</td>
+            <td>{{ fees.method }}</td>
+            <td>{{ fees.status }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No fee history available</td></tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

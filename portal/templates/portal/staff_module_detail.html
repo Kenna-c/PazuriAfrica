@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card reveal">
+    <h2>{{ module.code }} - {{ module.name }}</h2>
+    <p><strong>Program:</strong> {{ module.program.name }}</p>
+</div>
+
+<div class="card reveal">
+    <h3>Enrolled Students</h3>
+    <ul>
+        {% for student in students %}
+            <li>
+                {{ student.admission_number }} -
+                {{ student.user.get_full_name }}
+            </li>
+        {% empty %}
+            <li>No students found</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<a href="{% url 'upload_results' module.id %}">Upload Results</a>
+
+{% endblock %}

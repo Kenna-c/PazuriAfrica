@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card reveal">
+    <h3>Fees</h3>
+    <p>Your current fee balance is: <strong>{{ fees.balance }}</strong></p>
+    {% if fees.balance > 0 %}
+        <a href="{% url 'initiate_payment' %}">Make a Payment</a>
+    {% else %}
+        <p>Your fees are fully paid. Thank you!</p>
+    {% endif %}
+</div>
+{% endblock %}

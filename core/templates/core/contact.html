@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Contact Us</h2>
+<hr>
+
+<div class="row">
+  <div class="col-md-6">
+    <p><strong>Location:</strong> Kapenguria, Kenya</p>
+    <p><strong>Phone:</strong> +254 7XX XXX XXX</p>
+    <p><strong>Email:</strong> info@pazuriafricacollege.ac.ke</p>
+  </div>
+
+  <div class="col-md-6">
+    <form>
+      <div class="mb-3">
+        <label>Name</label>
+        <input class="form-control">
+      </div>
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label>Message</label>
+        <textarea class="form-control"></textarea>
+      </div>
+      <button class="btn btn-primary">Send Message</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card reveal">
+    <h2>Upload Results – {{ course.code }}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Result</button>
+    </form>
+</div>
+
+{% endblock %}

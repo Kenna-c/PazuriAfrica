@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2>Assignments</h2>
+    <ul>
+        {% for assignment in assignments %}
+            <li>
+                <strong>{{ assignment.title }}</strong> - {{ assignment.description }}
+                <br>
+                Due Date: {{ assignment.due_date }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
